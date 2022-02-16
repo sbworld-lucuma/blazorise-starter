@@ -1,0 +1,101 @@
+﻿@page "/"
+
+<h1>Some Blazorise Components</h1>
+
+<Breadcrumb>
+    <BreadcrumbItem>
+        <BreadcrumbLink To="#">Home</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbItem>
+        <BreadcrumbLink To="#">Library</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbItem Active="true">
+        <BreadcrumbLink To="#">Data</BreadcrumbLink>
+
+    </BreadcrumbItem>
+</Breadcrumb>
+
+Lists:
+<ListGroup>
+    <ListGroupItem>An item</ListGroupItem>
+    <ListGroupItem>A second item</ListGroupItem>
+    <ListGroupItem>A third item</ListGroupItem>
+    <ListGroupItem>A fourth item</ListGroupItem>
+    <ListGroupItem Disabled="true">A disabled item</ListGroupItem>
+</ListGroup>
+
+Modal:
+<Button Color="Color.Primary" Clicked="@ShowModal">Show Modal</Button>
+
+<Modal @ref="modalRef">
+    <ModalContent Centered="true">
+        <ModalHeader>
+            <ModalTitle>Employee edit</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Name</FieldLabel>
+                <TextEdit Placeholder="Enter name..." />
+            </Field>
+            <Field>
+                <FieldLabel>Surname</FieldLabel>
+                <TextEdit Placeholder="Enter surname..." />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button>
+            <Button Color="Color.Primary" Clicked="@HideModal">Save Changes</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+
+<CardDeck>
+    <Card>
+        <CardImage Source="https://source.unsplash.com/vdkD0uIPPCE" Alt="Card image cap 3"></CardImage>
+        <CardBody>
+            <CardTitle Size="5">Card title 1</CardTitle>
+            <CardText>
+                This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+            </CardText>
+            <Button Color="Color.Primary">Button</Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardImage Source="https://source.unsplash.com/vdkD0uIPPCE" Alt="Card image cap 9"></CardImage>
+        <CardBody>
+            <CardTitle Size="5">Card title 2</CardTitle>
+            <CardText>
+                This card has supporting text below as a natural lead-in to additional content.
+            </CardText>
+            <Button Color="Color.Primary">Button</Button>
+        </CardBody>
+    </Card>
+    <Card>
+        <CardImage Source="https://source.unsplash.com/vdkD0uIPPCE" Alt="Card image cap 12"></CardImage>
+        <CardBody>
+            <CardTitle Size="5">Card title 3</CardTitle>
+            <CardText>
+                This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
+            </CardText>
+            <Button Color="Color.Primary">Button</Button>
+        </CardBody>
+    </Card>
+</CardDeck>
+
+
+@code{
+    // reference to the modal component
+    private Modal modalRef;
+
+    private Task ShowModal()
+    {
+        return modalRef.Show();
+    }
+
+    private Task HideModal()
+    {
+        return modalRef.Hide();
+    }
+}
